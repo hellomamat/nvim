@@ -264,7 +264,6 @@ require("lazy").setup({
 				ensure_installed = {
 					"ts_ls",
 					"lua_ls",
-					"svelte",
 					"cssls",
 					"html",
 					"jsonls",
@@ -351,21 +350,12 @@ require("lazy").setup({
 				on_attach = on_attach,
 			})
 
-			vim.lsp.config("svelte", {
-				cmd = { "svelteserver", "--stdio" },
-				filetypes = { "svelte" },
-				root_markers = { "package.json", ".git" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
 			vim.lsp.enable("ts_ls")
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("gopls")
 			vim.lsp.enable("cssls")
 			vim.lsp.enable("html")
 			vim.lsp.enable("jsonls")
-			vim.lsp.enable("svelte")
 		end,
 	},
 	{
