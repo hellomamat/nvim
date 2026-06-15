@@ -42,35 +42,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"lua",
-					"javascript",
-					"typescript",
-					"html",
-					"css",
-					"json",
-					"markdown",
-					"tsx",
-					"bash",
-					"go",
-					"java",
-					"vim",
-					"regex",
-				},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = { enable = true },
-				auto_install = true,
-			})
-		end,
-	},
-	{
 		"thesimonho/kanagawa-paper.nvim",
 		lazy = false,
 		priority = 1000,
