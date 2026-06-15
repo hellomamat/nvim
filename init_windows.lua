@@ -71,63 +71,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				panel = {
-					enabled = true,
-					auto_refresh = false,
-					keymap = {
-						jump_prev = "[[",
-						jump_next = "]]",
-						accept = "<CR>",
-						refresh = "gr",
-						open = "<M-CR>",
-					},
-					layout = {
-						position = "bottom",
-						ratio = 0.4,
-					},
-				},
-				suggestion = {
-					enabled = true,
-					auto_trigger = true,
-					debounce = 75,
-					keymap = {
-						accept = "<M-l>",
-						accept_word = false,
-						accept_line = false,
-						next = "<M-]>",
-						prev = "<M-[>",
-						dismiss = "<C-]>",
-					},
-				},
-				filetypes = {
-					yaml = false,
-					markdown = false,
-					help = false,
-					gitcommit = false,
-					gitrebase = false,
-					hgcommit = false,
-					svn = false,
-					cvs = false,
-					["."] = false,
-				},
-				copilot_node_command = "node",
-				server_opts_overrides = {},
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
-	{
 		"thesimonho/kanagawa-paper.nvim",
 		lazy = false,
 		priority = 1000,
@@ -491,18 +434,16 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			"zbirenbaum/copilot-cmp",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
 		},
 		config = function()
 			local cmp = require("cmp")
-			local luasnip = require("luasnip")
 
 			cmp.setup({
 				snippet = {
 					expand = function(args)
-						luasnip.lsp_expand(args.body)
+						vim.fn["vsnip#anonymous"](args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
@@ -514,9 +455,8 @@ require("lazy").setup({
 					["<C-p>"] = cmp.mapping.select_prev_item(),
 				}),
 				sources = cmp.config.sources({
-					{ name = "copilot", group_index = 2 },
 					{ name = "nvim_lsp", group_index = 2 },
-					{ name = "luasnip", group_index = 2 },
+					{ name = "vsnip", group_index = 2 },
 					{ name = "buffer", group_index = 2 },
 					{ name = "path", group_index = 2 },
 				}),
@@ -693,11 +633,6 @@ map("n", "<leader>lh", function()
 
 	vim.notify(msg, vim.log.levels.INFO, { title = "Lazy.nvim Profiling" })
 end, { desc = "Tampilkan plugin paling berat di Lazy.nvim" })
-
-map("n", "<leader>cp", ":Copilot panel<CR>", opts)
-map("n", "<leader>cs", ":Copilot status<CR>", opts)
-map("n", "<leader>ce", ":Copilot enable<CR>", opts)
-map("n", "<leader>cd", ":Copilot disable<CR>", opts)
 
 map("n", "<leader>ttt", OpenRightTerminals, opts)
 map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
