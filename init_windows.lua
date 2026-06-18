@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- tambah Git bin ke PATH biar grep, bash, dll bisa dipakai dari Neovim
-vim.env.PATH = vim.env.PATH .. ";C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin"
+vim.env.PATH = vim.env.PATH .. ";C:\\Git\\usr\\bin;C:\\Git\\bin"
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
