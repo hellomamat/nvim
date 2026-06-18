@@ -1,6 +1,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- tambah Git bin ke PATH biar grep, bash, dll bisa dipakai dari Neovim
+vim.env.PATH = vim.env.PATH .. ";C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin"
+
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
@@ -179,7 +182,7 @@ require("lazy").setup({
 			telescope.setup({
 				defaults = {
 					vimgrep_arguments = {
-						"C:\\Program Files\\Git\\usr\\bin\\grep.exe",
+						"grep",
 						"--color=never",
 						"--with-filename",
 						"--line-number",
