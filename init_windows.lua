@@ -290,9 +290,6 @@ require("lazy").setup({
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local on_attach = function(client, bufnr)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentRangeFormattingProvider = false
-
 				local opts = { noremap = true, silent = true, buffer = bufnr }
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
