@@ -387,10 +387,14 @@ require("lazy").setup({
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					javascriptreact = { "prettier" },
+					typescriptreact = { "prettier" },
+					json = { "prettier" },
+					html = { "prettier" },
+					css = { "prettier" },
 					go = { "gofmt" },
-				},
-				default_format_opts = {
-					lsp_format = "fallback",
 				},
 				format_on_save = false,
 			})
