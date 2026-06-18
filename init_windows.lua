@@ -1,8 +1,14 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
 
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.cmdheight = 2
 vim.opt.updatetime = 500
 vim.opt.timeoutlen = 400
 vim.opt.pumheight = 15
@@ -42,35 +48,6 @@ require("lazy").setup({
 				override_by_extension = {
 					["default_icon"] = { icon = "-", color = "#6d8086", name = "Default" },
 				},
-			})
-		end,
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"lua",
-					"javascript",
-					"typescript",
-					"html",
-					"css",
-					"json",
-					"markdown",
-					"tsx",
-					"bash",
-					"go",
-					"java",
-					"vim",
-					"regex",
-				},
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = false,
-				},
-				indent = { enable = true },
-				auto_install = true,
 			})
 		end,
 	},
