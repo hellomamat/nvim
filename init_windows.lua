@@ -11,7 +11,6 @@ vim.g.loaded_python3_provider = 0
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.cmdheight = 2
 vim.opt.updatetime = 500
 vim.opt.timeoutlen = 400
 vim.opt.pumheight = 15
