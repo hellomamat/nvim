@@ -271,8 +271,6 @@ require("lazy").setup({
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"ts_ls",
-					"lua_ls",
-					"svelte",
 					"cssls",
 					"html",
 					"jsonls",
@@ -309,20 +307,6 @@ require("lazy").setup({
 				on_attach = on_attach,
 			})
 
-			vim.lsp.config("lua_ls", {
-				cmd = { "lua-language-server" },
-				filetypes = { "lua" },
-				root_markers = { ".luarc.json", ".git" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = {
-					Lua = {
-						diagnostics = { globals = { "vim" } },
-						workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-					},
-				},
-			})
-
 			vim.lsp.config("gopls", {
 				cmd = { "gopls" },
 				filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -355,21 +339,11 @@ require("lazy").setup({
 				on_attach = on_attach,
 			})
 
-			vim.lsp.config("svelte", {
-				cmd = { "svelteserver", "--stdio" },
-				filetypes = { "svelte" },
-				root_markers = { "package.json", ".git" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
 			vim.lsp.enable("ts_ls")
-			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("gopls")
 			vim.lsp.enable("cssls")
 			vim.lsp.enable("html")
 			vim.lsp.enable("jsonls")
-			vim.lsp.enable("svelte")
 		end,
 	},
 	{
@@ -413,15 +387,10 @@ require("lazy").setup({
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					javascriptreact = { "prettier" },
-					typescriptreact = { "prettier" },
-					json = { "prettier" },
-					html = { "prettier" },
-					css = { "prettier" },
-					lua = { "stylua" },
 					go = { "gofmt" },
+				},
+				default_format_opts = {
+					lsp_format = "fallback",
 				},
 				format_on_save = false,
 			})
